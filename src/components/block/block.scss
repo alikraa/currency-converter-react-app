@@ -1,0 +1,53 @@
+@import '../../mixins.scss';
+
+.converter-app__field {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.converter-app__field-buttons,
+.converter-app__field-input {
+  @include border;
+}
+
+.converter-app__currency-btn {
+  width: 75px;
+  height: 45px;
+  border-radius: 5px;
+}
+
+.converter-app__currency-btn:last-child {
+  width: 60px;
+  outline: none;
+}
+
+.btn-image {
+  width: 20px;
+  height: 20px;
+}
+
+.converter-app__currency-btn:hover {
+  background-color: #92e692;
+}
+
+.converter-app__currency-btn:active,
+.active {
+  background-color: #4fc44f;
+  color: #fff;
+}
+
+.converter-app__currency-btn:disabled {
+  background-color: #fff;
+  color: #000;
+  cursor: auto;
+}
+
+.converter-app__field-input {
+  height: 120px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 50px;
+}
