@@ -6,7 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:import/recommended',
-    "plugin:jsx-a11y/recommended",
+    'plugin:jsx-a11y/recommended',
     'airbnb',
     'prettier',
   ],
@@ -18,6 +18,13 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
+    'react/jsx-filename-extension': [
+      2,
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-console': 'warn',
   },
 };
