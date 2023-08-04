@@ -1,21 +1,29 @@
+import { BlockProps } from '../../ts/interfaces.ts';
+import { defaultCurrencies } from '../../ts/view.ts';
 import './block.scss';
 
-function Block() {
+function Block({
+  value,
+  handleChangeValue,
+  currency,
+  handleChangeCurrency,
+}: BlockProps) {
+  const currencies = defaultCurrencies.map((item) => (
+    <button
+      key={item.id}
+      className={`converter-app__currency-btn ${
+        currency === item.name ? 'active' : ''
+      }`}
+      type="button"
+      onClick={() => handleChangeCurrency(item.name)}
+    >
+      {item.name}
+    </button>
+  ));
   return (
     <div className="converter-app__field">
       <div className="converter-app__field-buttons">
-        <button className="converter-app__currency-btn active" type="button">
-          RUS
-        </button>
-        <button className="converter-app__currency-btn" type="button">
-          USD
-        </button>
-        <button className="converter-app__currency-btn" type="button">
-          EUR
-        </button>
-        <button className="converter-app__currency-btn" type="button">
-          GBP
-        </button>
+        {currencies}
         <button className="converter-app__currency-btn" type="button" disabled>
           <img
             src="../../../arrow-icon.svg"
@@ -26,6 +34,8 @@ function Block() {
       </div>
       <input
         type="number"
+        value={value}
+        onChange={(event) => handleChangeValue(event.currentTarget.value)}
         placeholder="0"
         className="converter-app__field-input"
       />
