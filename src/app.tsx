@@ -19,6 +19,20 @@ function App() {
   }, []);
 
   const onChangeFromPrice = (value: HTMLInputElement['value']) => {
+    if (fromCurrency === toCurrency) {
+      setToPrice(Number(value));
+    } else if (fromCurrency === defaultCurrencies[0].name) {
+      const result = Number(value) / Number(rates[`${toCurrency}`].Value);
+      setToPrice(Number(result.toFixed(3)));
+    } else if (toCurrency === defaultCurrencies[0].name) {
+      const result1 = Number(value) * Number(rates[`${fromCurrency}`].Value);
+      setToPrice(Number(result1.toFixed(3)));
+    } else {
+      const price = Number(value) / Number(rates[`${toCurrency}`].Value);
+      const result2 = price * Number(rates[`${fromCurrency}`].Value);
+      setToPrice(Number(result2.toFixed(3)));
+    }
+
     setFromPrice(Number(value));
   };
 
