@@ -5,4 +5,10 @@ interface BlockProps {
   handleChangeCurrency: (currency: string) => void;
 }
 
-export type { BlockProps };
+interface CurrencyData {
+  [index: string]: {
+    Value: string;
+  };
+}
+
+export type { BlockProps, CurrencyData };

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Block } from './components/block/block.tsx';
-import { defaultCurrencies } from './ts/view.ts';
+import { defaultCurrencies, url } from './ts/view.ts';
+import { serverRequest } from './ts/request.ts';
+import { CurrencyData } from './ts/interfaces.ts';
 import './app.scss';
 
 function App() {
@@ -10,7 +12,11 @@ function App() {
   const [fromPrice, setFromPrice] = useState(0);
   const [toPrice, setToPrice] = useState(0);
 
-  const [rates, setRates] = useState({});
+  const [rates, setRates] = useState<CurrencyData>({});
+
+  useEffect(() => {
+    serverRequest(url).then((response) => setRates(response.Valute));
+  }, []);
 
   const onChangeFromPrice = (value: HTMLInputElement['value']) => {
     setFromPrice(Number(value));
