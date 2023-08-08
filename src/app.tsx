@@ -13,9 +13,14 @@ function App() {
   const [toPrice, setToPrice] = useState(0);
 
   const [rates, setRates] = useState<CurrencyData>({});
+  const [date, setDate] = useState('');
 
   useEffect(() => {
     serverRequest(url).then((response) => setRates(response.Valute));
+
+    serverRequest(url).then((response) =>
+      setDate(new Date(response.Date).toLocaleDateString())
+    );
   }, []);
 
   const onChangeFromPrice = (value: HTMLInputElement['value']) => {
@@ -55,20 +60,23 @@ function App() {
   };
 
   return (
-    <div className="converter-app">
-      <Block
-        value={fromPrice}
-        handleChangeValue={onChangeFromPrice}
-        currency={fromCurrency}
-        handleChangeCurrency={setFromCurrency}
-      />
-      <Block
-        value={toPrice}
-        handleChangeValue={onChangeToPrice}
-        currency={toCurrency}
-        handleChangeCurrency={setToCurrency}
-      />
-    </div>
+    <>
+      <h1 className="header">Последнее обновление базы данных: {date} </h1>
+      <div className="converter-app">
+        <Block
+          value={fromPrice}
+          handleChangeValue={onChangeFromPrice}
+          currency={fromCurrency}
+          handleChangeCurrency={setFromCurrency}
+        />
+        <Block
+          value={toPrice}
+          handleChangeValue={onChangeToPrice}
+          currency={toCurrency}
+          handleChangeCurrency={setToCurrency}
+        />
+      </div>
+    </>
   );
 }
 
