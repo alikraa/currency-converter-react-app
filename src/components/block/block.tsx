@@ -3,6 +3,7 @@ import { defaultCurrencies } from '../../ts/view.ts';
 import './block.scss';
 
 function Block({
+  id,
   value,
   handleChangeValue,
   currency,
@@ -21,7 +22,7 @@ function Block({
     </button>
   ));
   return (
-    <div className="converter-app__field">
+    <div className="converter-app__field" id={id}>
       <div className="converter-app__field-buttons">
         {currencies}
         <button className="converter-app__currency-btn" type="button" disabled>
@@ -35,7 +36,7 @@ function Block({
       <input
         type="number"
         value={value}
-        onChange={(event) => handleChangeValue(event.currentTarget.value)}
+        onChange={(event) => handleChangeValue(event.currentTarget.value, id)}
         placeholder="0"
         className="converter-app__field-input"
       />

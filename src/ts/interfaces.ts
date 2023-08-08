@@ -1,6 +1,7 @@
 interface BlockProps {
+  id: string;
   value: number;
-  handleChangeValue: (event: HTMLInputElement['value']) => void;
+  handleChangeValue: (event: HTMLInputElement['value'], id: string) => void;
   currency: string;
   handleChangeCurrency: (currency: string) => void;
 }
