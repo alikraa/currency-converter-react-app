@@ -16,11 +16,10 @@ function App() {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-    serverRequest(url).then((response) => setRates(response.Valute));
-
-    serverRequest(url).then((response) =>
-      setDate(new Date(response.Date).toLocaleDateString())
-    );
+    serverRequest(url).then((response) => {
+      setRates(response.Valute);
+      setDate(new Date(response.Date).toLocaleDateString());
+    });
   }, []);
 
   const onChangeFromPrice = (
