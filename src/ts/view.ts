@@ -7,6 +7,11 @@ export const defaultCurrencies = [
   { id: 4, name: 'GBP' },
 ];
 
+export const defaultValues = {
+  from: 'FROM',
+  to: 'TO',
+};
+
 export const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
 
 export const converter = (
@@ -14,7 +19,7 @@ export const converter = (
   fromCurrency: string,
   toCurrency: string,
   data: CurrencyData,
-  value: string,
+  value: string | number,
   id: string
 ) => {
   const condition = id === 'FROM';

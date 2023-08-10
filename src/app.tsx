@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Block } from './components/block/block.tsx';
-import { converter, defaultCurrencies, url } from './ts/view.ts';
+import { converter, defaultCurrencies, url, defaultValues } from './ts/view.ts';
 import { serverRequest } from './ts/request.ts';
 import { CurrencyData } from './ts/interfaces.ts';
 import './app.scss';
@@ -23,31 +23,49 @@ function App() {
     );
   }, []);
 
-  const onChangeFromPrice = (value: HTMLInputElement['value'], id: string) => {
+  const onChangeFromPrice = (
+    value: HTMLInputElement['value'] | number,
+    id: string
+  ) => {
     converter(setToPrice, fromCurrency, toCurrency, rates, value, id);
 
     setFromPrice(Number(value));
   };
 
-  const onChangeToPrice = (value: HTMLInputElement['value'], id: string) => {
+  const onChangeToPrice = (
+    value: HTMLInputElement['value'] | number,
+    id: string
+  ) => {
     converter(setFromPrice, fromCurrency, toCurrency, rates, value, id);
 
     setToPrice(Number(value));
   };
+
+  useEffect(() => {
+    if (Object.keys(rates).length !== 0) {
+      onChangeFromPrice(fromPrice, defaultValues.from);
+    }
+  }, [fromCurrency]);
+
+  useEffect(() => {
+    if (Object.keys(rates).length !== 0) {
+      onChangeToPrice(toPrice, defaultValues.to);
+    }
+  }, [toCurrency]);
 
   return (
     <>
       <h1 className="header">Последнее обновление базы данных: {date} </h1>
       <div className="converter-app">
         <Block
-          id="FROM"
+          id={defaultValues.from}
           value={fromPrice}
           handleChangeValue={onChangeFromPrice}
           currency={fromCurrency}
           handleChangeCurrency={setFromCurrency}
         />
         <Block
-          id="TO"
+          id={defaultValues.to}
           value={toPrice}
           handleChangeValue={onChangeToPrice}
           currency={toCurrency}
