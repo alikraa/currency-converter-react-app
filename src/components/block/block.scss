@@ -17,6 +17,20 @@
   width: 75px;
   height: 45px;
   border-radius: 5px;
+
+  &:hover {
+    background-color: #92e692;
+  }
+
+  &:active {
+    @include active;
+  }
+
+  &:disabled {
+    background-color: #fff;
+    color: #000;
+    cursor: auto;
+  }
 }
 
 .converter-app__currency-btn:last-child {
@@ -29,20 +43,8 @@
   height: 20px;
 }
 
-.converter-app__currency-btn:hover {
-  background-color: #92e692;
-}
-
-.converter-app__currency-btn:active,
 .active {
-  background-color: #4fc44f;
-  color: #fff;
-}
-
-.converter-app__currency-btn:disabled {
-  background-color: #fff;
-  color: #000;
-  cursor: auto;
+  @include active;
 }
 
 .converter-app__field-input {

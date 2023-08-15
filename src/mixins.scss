@@ -7,3 +7,8 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgb(197, 197, 197);
 }
+
+@mixin active {
+  background-color: #4fc44f;
+  color: #fff;
+}
