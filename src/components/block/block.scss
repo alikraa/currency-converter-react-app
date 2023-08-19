@@ -13,10 +13,15 @@
   @include border;
 }
 
+.converter-app__field-buttons {
+  height: 60px;
+}
+
 .converter-app__currency-btn {
-  width: 75px;
-  height: 45px;
+  width: 90px;
+  height: inherit;
   border-radius: 5px;
+  font-size: 25px;
 
   &:hover {
     background-color: #92e692;
@@ -34,13 +39,13 @@
 }
 
 .converter-app__currency-btn:last-child {
-  width: 60px;
+  width: 75px;
   outline: none;
 }
 
 .btn-image {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .active {
@@ -48,8 +53,8 @@
 }
 
 .converter-app__field-input {
-  height: 120px;
-  padding: 10px;
+  height: 150px;
+  padding: 15px;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 75px;
 }
